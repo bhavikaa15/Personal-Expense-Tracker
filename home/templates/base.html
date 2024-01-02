@@ -1,11 +1,15 @@
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Personal Expense Tracker</title>
+  
+    <title>Django Expense Tracker</title>
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+        
+
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -24,12 +28,11 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: 'Lato', sans-serif;
-  font-size: 18px;
 }
 
 .container {
   margin: 30px auto;
-  width: 400px;
+  width: 350px;
 }
 
 h1 {
@@ -157,12 +160,20 @@ input[type='number'] {
 .list li:hover .delete-btn {
   opacity: 1;
 }
+
+
+
+
     </style>
   </head>
+
   <body>
 
     {% block start %}
-    
-   {% endblock %}
+  
+
+    {% endblock %}
+
+
   </body>
 </html>
