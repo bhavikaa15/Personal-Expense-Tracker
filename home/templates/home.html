@@ -1,48 +1,67 @@
-{% extends "base.html"}
+{% extends "base.html" %} 
 {% block start %}
+
+
 <h2>Expense Tracker</h2>
 
-    <div class="container">
-      <h4>Your Balance</h4>
-      <h1 id="balance">Rs.0</h1>
+<div class="container">
+  <h4>Your Balance</h4>
+  <h1 id="balance">Rs.{{profile.balance}}</h1>
 
-      <div class="inc-exp-container">
-        <div>
-          <h4>Income</h4>
-          <p id="money-plus" class="money plus">+Rs.0</p>
-        </div>
-        <div>
-          <h4>Expense</h4>
-          <p id="money-minus" class="money minus">-Rs.0</p>
-        </div>
-      </div>
+  <div class="inc-exp-container">
+    <div>
+      <h4>Income</h4>
+      <p id="money-plus" class="money plus">+Rs.{{profile.income}}</p>
+    </div>
+    <div>
+      <h4>Expense</h4>
+      <p id="money-minus" class="money minus">-Rs.{{profile.expenses}}</p>
+    </div>
+  </div>
 
-      <h3>History</h3>
-      <ul id="list" class="list">
-        <!-- <li class="minus">
-          Cash <span>-$400</span><button class="delete-btn">x</button>
-        </li> -->
-      </ul>
+  <h3>History</h3>
+  <ul id="list" class="list">
 
-      <h3>Add new transaction</h3>
-      <form id="form">
-        <div class="form-control">
-          <label for="text">Text</label>
-          <input type="text" id="text" placeholder="Enter text..." />
-        </div>
-        <div class="form-control">
-          <label for="amount"
-            >Amount <br />
-            (negative - expense, positive - income)</label
-          >
-          <input type="number" id="amount" placeholder="Enter amount..." />
-        </div>
-        <button class="btn">Add transaction</button>
-      </form>
+    {% for expense in expenses%}
+    {% if expense.expense_type == 'Positive'%}
+    <li class="plus">
+      {{expense.name}} <span>+${{expense.amount}}</span>
+    </li>
+    {% else %}
+    <li class="minus">
+      {{expense.name}} <span>-${{expense.amount}}</span>
+    </li>
+    {% endif %}
+    {% endfor %}
+
+
+  </ul>
+
+  <h3>Add new transaction</h3>
+  <form id="form" method="POST">
+    {% csrf_token %}
+    <div class="form-control">
+      <label for="text">Text</label>
+      <input type="text" required name="text" id="text" placeholder="Enter text..." />
+    </div>
+    <div class="form-control">
+      <label for="amount"
+        >Amount <br />
+        (negative - expense, positive - income)</label
+      >
+      <input type="number" required name="amount" id="amount" placeholder="Enter amount..." />
     </div>
 
-
-
+    <div class="form-control">
+      <label for="text">Text</label>
+      <select name="expense_type" required class="form-control">
+        <option value="Positive">Positive</option>
+        <option value="Negative">Negative</option>
+      </select>
+    </div>
+    <button class="btn" type="submit">Add transaction</button>
+  </form>
+</div>
 
 
 
