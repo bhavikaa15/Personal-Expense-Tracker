@@ -25,11 +25,11 @@
     {% for expense in expenses%}
     {% if expense.expense_type == 'Positive'%}
     <li class="plus">
-      {{expense.name}} <span>+${{expense.amount}}</span>
+      {{expense.name}} <span>+Rs.{{expense.amount}}</span>
     </li>
     {% else %}
     <li class="minus">
-      {{expense.name}} <span>-${{expense.amount}}</span>
+      {{expense.name}} <span>-Rs.{{expense.amount}}</span>
     </li>
     {% endif %}
     {% endfor %}
